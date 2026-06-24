@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sathvik M M | CyberSecurity & DevSecOps</title>
+    <meta
+      name="description"
+      content="Portfolio of Sathvik M M, CyberSecurity and DevSecOps engineer focused on offensive security, SIEM, cloud security, and secure delivery."
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+      if (sessionStorage.getItem("introComplete") !== "1") {
+        window.location.replace("index.html");
+      } else {
+        sessionStorage.removeItem("introComplete");
+      }
+    </script>
+  </head>
+  <body class="main-page">
+    <canvas class="space-canvas" id="spaceCanvas" aria-hidden="true"></canvas>
+
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="Sathvik M M home">
+        <span class="brand-mark">SM</span>
+        <span>Sathvik M M</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">CyberSecurity and DevSecOps</p>
+            <h1>Sathvik M M</h1>
+            <p class="hero-text">
+              Security-focused engineer building stronger systems through penetration testing,
+              SIEM monitoring, cloud security, and automated DevSecOps pipelines.
+            </p>
+            <div class="hero-actions" aria-label="Profile links">
+              <a class="button primary" href="sathvik_m_m_main_resume.pdf" target="_blank" rel="noreferrer">Resume</a>
+              <a class="button" href="https://github.com/Sathvikmm18" target="_blank" rel="noreferrer">GitHub</a>
+              <a class="button" href="https://www.linkedin.com/in/sathvik-m-m-a0185332b/" target="_blank" rel="noreferrer">LinkedIn</a>
+            </div>
+          </div>
+
+          <div class="portrait-stage" aria-label="Portrait of Sathvik M M">
+            <img src="profile-web.jpg" alt="Sathvik M M" />
+          </div>
+        </div>
+      </section>
+
+      <section class="section stats-band" aria-label="Portfolio highlights">
+        <div>
+          <strong>2026</strong>
+          <span>B.E. Information Science & Engineering</span>
+        </div>
+        <div>
+          <strong>OWASP</strong>
+          <span>Web application assessments</span>
+        </div>
+        <div>
+          <strong>SIEM</strong>
+          <span>Splunk dashboards and alerting</span>
+        </div>
+        <div>
+          <strong>DevSecOps</strong>
+          <span>Docker, CI/CD, cloud security</span>
+        </div>
+      </section>
+
+      <section class="section split" id="work">
+        <div>
+          <p class="section-kicker">Experience</p>
+          <h2>Security operations with hands-on attack and defense.</h2>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <span>Jun 2026 - Present</span>
+            <h3>Cybersecurity Trainee, Cyber Lancers Pvt Ltd</h3>
+            <p>
+              Configuring Splunk SIEM dashboards for log ingestion, event correlation,
+              automated alert management, and threat monitoring across distributed systems.
+            </p>
+          </article>
+          <article class="timeline-item">
+            <span>Feb 2026 - Jun 2026</span>
+            <h3>Cybersecurity Intern, Cyber Lancers Pvt Ltd</h3>
+            <p>
+              Conducted web application security assessments, analyzed traffic with Wireshark
+              and Burp Suite, and documented remediation strategies using MITRE ATT&CK.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="projects">
+        <div class="section-heading">
+          <p class="section-kicker">GitHub Projects</p>
+          <h2>Built for security, infrastructure, and intelligent automation.</h2>
+          <a href="https://github.com/Sathvikmm18" target="_blank" rel="noreferrer">View all on GitHub</a>
+        </div>
+        <div class="project-grid">
+          <article class="project-card">
+            <span>Python / LangChain / FastAPI</span>
+            <h3>Multi-LLM Intelligent Assistant</h3>
+            <p>
+              AI assistant that routes prompts across multiple LLMs with model selection,
+              fallback handling, and optimization for response quality, latency, and cost.
+            </p>
+          </article>
+          <article class="project-card">
+            <span>Docker / Ubuntu / Nginx / Flask</span>
+            <h3>Docker-Based Multi-Service Infrastructure</h3>
+            <p>
+              Multi-container lab with SSH communication, secure networking, port mapping,
+              Apache, Nginx, and Flask deployments in isolated environments.
+            </p>
+          </article>
+          <article class="project-card">
+            <span>Kali / Metasploit / Burp Suite / Nmap</span>
+            <h3>Security Assessment & Penetration Testing Lab</h3>
+            <p>
+              Controlled offensive-security lab for reconnaissance, exploitation, web testing,
+              OWASP Top 10 discovery, and remediation documentation.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section skills-section" id="skills">
+        <div>
+          <p class="section-kicker">Stack</p>
+          <h2>Security tooling across attack, monitor, ship, and harden.</h2>
+        </div>
+        <div class="skills-grid">
+          <article>
+            <h3>Cybersecurity</h3>
+            <p>Penetration Testing, Vulnerability Assessment, OWASP Top 10, Incident Response, Threat Intelligence, MITRE ATT&CK.</p>
+          </article>
+          <article>
+            <h3>SIEM & Monitoring</h3>
+            <p>Splunk, SPL, dashboards, alerts, Prometheus, Grafana, Datadog, security analytics.</p>
+          </article>
+          <article>
+            <h3>Tools</h3>
+            <p>Burp Suite, Metasploit, Nmap, Wireshark, OWASP ZAP, Nessus, Nikto, SQLmap, John the Ripper, Kali Linux, Trivy, Snyk.</p>
+          </article>
+          <article>
+            <h3>DevSecOps & Cloud</h3>
+            <p>Docker, Kubernetes, Jenkins, GitHub Actions, Terraform, Ansible, AWS EC2, S3, IAM, CI/CD security.</p>
+          </article>
+          <article>
+            <h3>Programming</h3>
+            <p>Python, Bash, SQL, Flask, Django, Git, Maven, Gradle.</p>
+          </article>
+          <article>
+            <h3>Networking</h3>
+            <p>Kali Linux, Ubuntu, Windows, Cisco Packet Tracer, TCP/IP, DNS, HTTP, SSH.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section credential-band">
+        <div>
+          <p class="section-kicker">Certifications</p>
+          <h2>Learning path aligned with offensive security and cloud delivery.</h2>
+        </div>
+        <ul>
+          <li>RedTeam Certified Penetration Tester (CPT v3)</li>
+          <li>AWS Job Roles in Cloud - Amazon Web Services</li>
+          <li>Prompt Design in Vertex AI - Google Cloud</li>
+          <li>DevOps Engineer - Tutedude (In Progress)</li>
+        </ul>
+      </section>
+
+      <section class="section contact" id="contact">
+        <div>
+          <p class="section-kicker">Contact</p>
+          <h2>Let's build, break, monitor, and harden the next system.</h2>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:sathvikmm18@gmail.com">sathvikmm18@gmail.com</a>
+          <a href="tel:+919591482396">+91 95914 82396</a>
+          <a href="https://www.linkedin.com/in/sathvik-m-m-a0185332b/" target="_blank" rel="noreferrer">LinkedIn Profile</a>
+          <a href="https://github.com/Sathvikmm18" target="_blank" rel="noreferrer">GitHub Portfolio</a>
+          <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">YouTube</a>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

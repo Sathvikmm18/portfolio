@@ -1,0 +1,761 @@
+:root {
+  color-scheme: dark;
+  --bg: #08090c;
+  --ink: #f6f7fb;
+  --muted: #aeb5c4;
+  --line: rgba(255, 255, 255, 0.14);
+  --panel: rgba(255, 255, 255, 0.07);
+  --panel-strong: rgba(255, 255, 255, 0.12);
+  --blue: #47a3ff;
+  --red: #ff4b61;
+  --lime: #9dff6a;
+  --gold: #ffcc66;
+  --bmw-grey: #8b9099;
+  --bmw-grey-dark: #5c6169;
+  --bmw-grey-light: #c4c8cf;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+body.main-page {
+  background: #04050a;
+}
+
+body.intro-page {
+  overflow: hidden;
+  background: #030406;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── Intro splash ── */
+
+.intro-shell {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(71, 163, 255, 0.12), transparent 42%),
+    radial-gradient(circle at 80% 80%, rgba(255, 75, 97, 0.08), transparent 35%),
+    linear-gradient(180deg, #030406 0%, #0a0d14 55%, #050608 100%);
+}
+
+.intro-shell.is-exiting {
+  animation: introExit 0.65s ease forwards;
+}
+
+.intro-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 35%, rgba(0, 0, 0, 0.72) 100%);
+  pointer-events: none;
+}
+
+.intro-speed-lines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    100deg,
+    transparent 0,
+    transparent 42px,
+    rgba(255, 255, 255, 0.025) 42px,
+    rgba(255, 255, 255, 0.025) 43px
+  );
+  mask-image: linear-gradient(to bottom, transparent, #000 40%, #000 70%, transparent);
+  animation: speedLines 0.45s linear infinite;
+  pointer-events: none;
+}
+
+.intro-copy {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: 0 1.5rem;
+  animation: introFadeUp 1s ease both;
+}
+
+.intro-eyebrow {
+  margin: 0 0 0.75rem;
+  color: var(--lime);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.intro-name {
+  margin: 0 0 0.65rem;
+  font-size: clamp(3.2rem, 12vw, 8rem);
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #fff 20%, var(--bmw-grey-light) 55%, var(--blue));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.intro-role {
+  max-width: 36rem;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: clamp(0.95rem, 2.2vw, 1.2rem);
+}
+
+.intro-badge {
+  position: absolute;
+  top: clamp(1.5rem, 4vw, 2.5rem);
+  right: clamp(1rem, 4vw, 2.5rem);
+  z-index: 3;
+  display: grid;
+  gap: 0.2rem;
+  text-align: right;
+  animation: introFadeUp 1.2s ease both;
+}
+
+.m5-tag {
+  color: var(--ink);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.m5-model {
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.intro-road {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: min(42vh, 360px);
+  perspective: 1100px;
+  z-index: 2;
+}
+
+.intro-road-grid {
+  position: absolute;
+  inset: 38% -10% -55%;
+  transform: rotateX(68deg);
+  background:
+    linear-gradient(90deg, transparent 49.5%, rgba(255, 255, 255, 0.22) 50%, transparent 50.5%),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.18) 0 3px, transparent 3px 58px);
+  opacity: 0.55;
+  animation: roadScroll 0.35s linear infinite;
+}
+
+.intro-road-glow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 45%;
+  background: linear-gradient(to top, rgba(71, 163, 255, 0.18), transparent);
+  pointer-events: none;
+}
+
+.m5-track {
+  position: absolute;
+  left: -52rem;
+  bottom: 0.5rem;
+  width: min(92vw, 58rem);
+  height: auto;
+  animation: m5Drive 2.4s linear infinite;
+}
+
+.m5-car-scene {
+  position: relative;
+  transform-style: preserve-3d;
+  transform: perspective(1400px) rotateY(-16deg) rotateX(6deg) translateZ(0);
+  animation: m5CarBob 0.28s ease-in-out infinite alternate;
+}
+
+.m5-car-shadow {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: 4%;
+  height: 2.2rem;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.72);
+  filter: blur(18px);
+  transform: rotateX(78deg) scaleY(0.45);
+}
+
+.m5-car-speed-wake {
+  position: absolute;
+  left: -18%;
+  top: 42%;
+  width: 42%;
+  height: 18%;
+  background: linear-gradient(90deg, transparent, rgba(71, 163, 255, 0.22), transparent);
+  filter: blur(10px);
+  transform: skewX(-18deg);
+  opacity: 0.85;
+}
+
+.m5-car-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center bottom;
+  filter:
+    drop-shadow(0 1.8rem 2.4rem rgba(0, 0, 0, 0.55))
+    drop-shadow(0 0 2.2rem rgba(71, 163, 255, 0.12))
+    contrast(1.06)
+    saturate(1.08);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 78%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 78%, transparent 100%);
+}
+
+.m5-car-shine {
+  position: absolute;
+  inset: 12% 8% 28% 8%;
+  background: linear-gradient(
+    115deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.16) 48%,
+    transparent 58%
+  );
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: m5Shine 2.4s linear infinite;
+}
+
+.m5-car-reflection {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: -8%;
+  height: 28%;
+  background: linear-gradient(to bottom, rgba(139, 144, 153, 0.22), transparent);
+  transform: scaleY(-1) skewX(-8deg);
+  filter: blur(8px);
+  opacity: 0.35;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
+}
+
+.intro-progress {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(1.25rem, 4vw, 2rem);
+  z-index: 4;
+  width: min(18rem, calc(100% - 2rem));
+  transform: translateX(-50%);
+}
+
+.intro-progress-bar {
+  width: 0;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--blue), var(--lime));
+  transition: width linear;
+}
+
+.intro-progress-label {
+  display: block;
+  margin-top: 0.55rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* ── Main page space canvas ── */
+
+.space-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.main-page main,
+.main-page .site-header {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Site chrome ── */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem clamp(1rem, 4vw, 3rem);
+  border-bottom: 1px solid var(--line);
+  background: rgba(8, 9, 12, 0.76);
+  backdrop-filter: blur(18px);
+}
+
+.brand,
+.nav-links,
+.hero-actions,
+.contact-links {
+  display: flex;
+  align-items: center;
+}
+
+.brand {
+  gap: 0.7rem;
+  font-weight: 800;
+}
+
+.brand-mark {
+  display: grid;
+  width: 2.4rem;
+  height: 2.4rem;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), #fff 45%, var(--red));
+  color: #06070a;
+  font-size: 0.82rem;
+}
+
+.nav-links {
+  gap: clamp(0.8rem, 2.5vw, 2rem);
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.nav-links a:hover,
+.section-heading a:hover,
+.contact-links a:hover {
+  color: var(--ink);
+}
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  padding: clamp(6.5rem, 12vw, 9rem) clamp(1rem, 5vw, 5rem) 3rem;
+}
+
+.hero-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  max-width: 1180px;
+  margin: 0 auto;
+  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.72fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: center;
+}
+
+.eyebrow,
+.section-kicker {
+  margin: 0 0 0.75rem;
+  color: var(--lime);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  max-width: 9ch;
+  margin-bottom: 1rem;
+  font-size: clamp(4.2rem, 13vw, 10.5rem);
+  line-height: 0.84;
+  letter-spacing: 0;
+}
+
+h2 {
+  margin-bottom: 0;
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+h3 {
+  margin-bottom: 0.65rem;
+  font-size: 1.12rem;
+  line-height: 1.25;
+}
+
+.hero-text {
+  max-width: 680px;
+  color: var(--muted);
+  font-size: clamp(1rem, 2vw, 1.28rem);
+}
+
+.hero-actions {
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.button {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.75rem 1.15rem;
+  background: var(--panel);
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.button.primary {
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--blue), var(--red));
+  color: #fff;
+}
+
+.portrait-stage {
+  position: relative;
+  max-width: 390px;
+  justify-self: end;
+}
+
+.portrait-stage img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  object-fit: cover;
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.45);
+}
+
+.signal-panel {
+  position: absolute;
+  right: -1rem;
+  bottom: 1rem;
+  display: grid;
+  gap: 0.42rem;
+  width: min(14rem, 72%);
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  background: rgba(8, 9, 12, 0.82);
+  backdrop-filter: blur(16px);
+}
+
+.signal-panel span {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.section {
+  width: min(1180px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: clamp(4rem, 9vw, 7rem) 0;
+}
+
+.stats-band,
+.credential-band {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  width: min(1180px, calc(100% - 2rem));
+  border: 1px solid var(--line);
+  background: var(--line);
+  padding: 0;
+}
+
+.stats-band div,
+.credential-band > div,
+.credential-band ul {
+  min-width: 0;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.055);
+  backdrop-filter: blur(8px);
+}
+
+.stats-band strong {
+  display: block;
+  font-size: clamp(1.4rem, 4vw, 2.6rem);
+  line-height: 1;
+}
+
+.stats-band span,
+.timeline-item span,
+.project-card span,
+.contact-links a {
+  color: var(--muted);
+}
+
+.split,
+.skills-section,
+.credential-band {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(2rem, 6vw, 5rem);
+}
+
+.timeline {
+  display: grid;
+  gap: 1rem;
+}
+
+.timeline-item,
+.project-card,
+.skills-grid article {
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  background: var(--panel);
+  backdrop-filter: blur(8px);
+}
+
+.timeline-item p,
+.project-card p,
+.skills-grid p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.section-heading h2 {
+  max-width: 760px;
+}
+
+.section-heading a {
+  flex: 0 0 auto;
+  color: var(--lime);
+  font-weight: 800;
+}
+
+.project-grid,
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.project-card {
+  min-height: 18rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.project-card span {
+  margin-bottom: auto;
+  font-size: 0.78rem;
+}
+
+.skills-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.credential-band {
+  border: 1px solid var(--line);
+  background: var(--line);
+  padding: 0;
+}
+
+.credential-band > div,
+.credential-band ul {
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.credential-band ul {
+  display: grid;
+  gap: 0.8rem;
+  margin: 0;
+  color: var(--muted);
+}
+
+.contact {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.55fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.contact-links {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.75rem;
+}
+
+.contact-links a {
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background: var(--panel);
+}
+
+@keyframes introFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes introExit {
+  to {
+    opacity: 0;
+    transform: scale(1.03);
+    filter: blur(6px);
+  }
+}
+
+@keyframes m5Drive {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(100vw + 58rem));
+  }
+}
+
+@keyframes m5CarBob {
+  from {
+    transform: perspective(1400px) rotateY(-16deg) rotateX(6deg) translateY(0);
+  }
+  to {
+    transform: perspective(1400px) rotateY(-16deg) rotateX(6deg) translateY(-4px);
+  }
+}
+
+@keyframes m5Shine {
+  from {
+    transform: translateX(-120%);
+  }
+  to {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes roadScroll {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: 0 0, 0 58px;
+  }
+}
+
+@keyframes speedLines {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-43px);
+  }
+}
+
+@media (max-width: 860px) {
+  .site-header {
+    position: sticky;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    min-height: auto;
+    padding-top: 3rem;
+  }
+
+  .hero-grid,
+  .split,
+  .skills-section,
+  .credential-band,
+  .contact {
+    grid-template-columns: 1fr;
+  }
+
+  .portrait-stage {
+    justify-self: start;
+    width: min(100%, 360px);
+  }
+
+  .intro-road {
+    height: min(36vh, 280px);
+  }
+
+  .m5-track {
+    bottom: 0;
+    width: min(95vw, 42rem);
+  }
+
+  .intro-badge {
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .stats-band,
+  .project-grid,
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-heading {
+    display: block;
+  }
+
+  .section-heading a {
+    display: inline-block;
+    margin-top: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .intro-progress-bar {
+    width: 100% !important;
+  }
+}
