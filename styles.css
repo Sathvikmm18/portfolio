@@ -377,8 +377,8 @@ a {
 .section-kicker {
   margin: 0 0 0.75rem;
   color: var(--lime);
-  font-size: 0.78rem;
-  font-weight: 800;
+  font-size: 0.90rem;
+  font-weight: 1000;
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
@@ -440,6 +440,22 @@ h3 {
   border-color: transparent;
   background: linear-gradient(135deg, var(--blue), var(--red));
   color: #fff;
+}
+
+.button svg {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+}
+
+.button:hover {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: var(--panel-strong);
+}
+
+.button.primary:hover {
+  border-color: transparent;
+  background: linear-gradient(135deg, #6bb4ff, var(--red));
 }
 
 .portrait-stage {
@@ -576,11 +592,58 @@ h3 {
   display: flex;
   flex-direction: column;
   justify-content: end;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.project-card:hover {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: var(--panel-strong);
+  transform: translateY(-3px);
 }
 
 .project-card span {
   margin-bottom: auto;
   font-size: 0.78rem;
+}
+
+.project-card-top {
+  margin-bottom: auto;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.project-card-top span {
+  margin-bottom: 0;
+}
+
+.project-card .project-index {
+  color: var(--lime);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.project-workflow {
+  margin: 0.9rem 0 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.55;
+}
+
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.15rem;
+}
+
+.project-actions .button {
+  min-height: 2.6rem;
+  padding: 0.55rem 1rem;
+  font-size: 0.88rem;
 }
 
 .skills-grid {
@@ -753,6 +816,10 @@ h3 {
     scroll-behavior: auto !important;
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
+  }
+
+  .project-card:hover {
+    transform: none;
   }
 
   .intro-progress-bar {
